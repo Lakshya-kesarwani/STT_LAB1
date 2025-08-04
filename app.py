@@ -1,6 +1,7 @@
-class Calculator:
-    
+class Calculator:    
+    """A simple calculator class that performs basic arithmetic operations."""
     def __init__(self):
+        """Initializes the calculator with a result of zero."""
         self.result = 0
     def add(self, value):
         """Adds a value to the current result."""
@@ -30,14 +31,12 @@ class Calculator:
 def main():
     calc = Calculator()
     print("Initial result:", calc.get_result())
-    
     print("Adding 10:", calc.add(10))
     print("Subtracting 5:", calc.subtract(5))
     print("Multiplying by 2:", calc.multiply(2))
     print("Dividing by 3:", calc.divide(3))
     
     print("Current result:", calc.get_result())
-    
     print("Resetting calculator.")
     calc.reset()
     print("Result after reset:", calc.get_result())
