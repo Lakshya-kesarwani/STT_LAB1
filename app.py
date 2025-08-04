@@ -1,4 +1,4 @@
-""" app.py : This module contains a simple calculator class that performs basic arithmetic operations."""
+""" app.py : This module contains a simple calculator class to performs arithmetic operations."""
 class Calculator:
     """A simple calculator class that performs basic arithmetic operations."""
     def __init__(self):
