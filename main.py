@@ -24,7 +24,7 @@ for i,commit in enumerate(Repository(path_to_repo=urls).traverse_commits()):
             break
 # For each modified file (in the previous step), store the following (as csv).
 data = pd.DataFrame(data).to_csv('commit_data.csv', index=False)
-"""Hash Message Filename, Source Code (before) ,Source Code (current),Diff, LLM Inference (fix type) ,Rectified Message"""
+"""Hash, Message, Filename, Source Code (before), Source Code (current), Diff, LLM Inference (fix type), Rectified Message"""
 from pydriller import Commit
 def get_diff(before,current):
     diff = []
