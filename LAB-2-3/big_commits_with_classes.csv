@@ -1,4 +1,4 @@
-Hash,Message,Filename,Source Code (before),Source Code (current),Diff,LLM Inference
+Hash,Message,Filename,Source Code (before),Source Code (current),Diff,LLM Inference,Rectifier,MI_Before,CC_Before,LOC_Before,MI_After,CC_After,LOC_After,MI_Change,CC_Change,LOC_Change,Semantic_Similarity,Token_Similarity,Semantic_class,Token_class,Classes_Agree
 50038c07c815b82d412af43996a122e33eecd385,Matthew Johnson: fix build file issues,build/build_jax.sh,"#!/bin/bash
 set -exv
 
@@ -233,7 +233,7 @@ index 63cb0b229bd97a952fee588dfaa169e669cc5180..0bf8ae06c11bfedc583f8b3bd5a35f0c
  ./configure
  popd
  
-",Other
+",Deadlock / livelock,Move TF_NCCL_VERSION assignment inside CUDA conditional block,0.0,0,0,0.0,0,0,0.0,0,0,1.0,0.9950921270028887,Minor,Minor,YES
 50038c07c815b82d412af43996a122e33eecd385,Matthew Johnson: fix build file issues,examples/BUILD,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -341,7 +341,7 @@ index 463f244df67a06e79da79274f7a972b013f7737e..230e9ceb746cc87285216554f2a13b2d
 +        ""//jax:stax"",
      ],
  )
-",Other
+",Exception handling / swallowed exceptions,Update dependencies for mnist_vae.py to use //jax:minmax and //jax:stax instead of local :minmax,100.0,0,46,100.0,0,46,0.0,0,0,0.9998866319656372,0.9667442590570476,Minor,Minor,YES
 50038c07c815b82d412af43996a122e33eecd385,Matthew Johnson: fix build file issues,jax/BUILD,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -485,7 +485,7 @@ index cddf993d6dc38b1e4e1c8c14ac13a9050cb0822a..c9754372f5fa55582df5c963e3bda4f4
          ],
          exclude = [
              ""*_test.py"",
-",Other
+",Performance regression,Add scipy stats module to jax py_library sources,100.0,0,65,100.0,0,66,0.0,0,1,0.9997847080230713,0.9764980731533818,Minor,Minor,YES
 50038c07c815b82d412af43996a122e33eecd385,Matthew Johnson: fix build file issues,setup.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -559,7 +559,7 @@ index 2b2ebc68daac0973f22d4a4d69d4273f7afe90ca..b634177d3bc1891d516bfccf6b4c4ac4
      url='https://github.com/google/jax',
      license='Apache-2.0',
      package_data={'jax.lib': glob('jax/lib/*.so')},
-",Other
+",Documentation / comment mismatch,Add absl-py to install requirements in setup.py,100.0,0,30,100.0,0,30,0.0,0,0,0.9999370574951172,0.9858844066438253,Minor,Minor,YES
 50038c07c815b82d412af43996a122e33eecd385,Matthew Johnson: fix build file issues,tests/BUILD,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -840,7 +840,7 @@ index 310d71c906ca3dd4c0ae9a29f13ae43bec1b0ec5..95d6ee29e121c29f4866826e98257437
 +    srcs = [""lapax_test.py""],
 +    deps = [""//jax:lapax""],
  )
-",Other
+",Exception handling / swallowed exceptions,Remove 'tests/' prefix from test file paths and update dependencies to use absolute labels.,100.0,0,94,100.0,0,94,0.0,0,0,0.999826192855835,0.9272554066304788,Minor,Minor,YES
 51fc713089f8e456d95f79e4ed58687eb72edbfb,"Matthew Johnson: remove absl from examples, fix import statements",examples/interactive.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -875,7 +875,7 @@ def main(unused_argv):
 
 if __name__ == ""__main__"":
   app.run(main)
-",,,Other
+",,,Index out of range,Minor update,96.61564736937602,1,34,0.0,0,0,-96.61564736937602,-1,-34,0.0,0.0,Major,Major,YES
 51fc713089f8e456d95f79e4ed58687eb72edbfb,"Matthew Johnson: remove absl from examples, fix import statements",examples/mnist_classifier.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -1107,7 +1107,7 @@ index f88624f9741e49a3222e8903fbe19ab1cd421184..7eba6b9602e1e061139c930078458157
 -
 -if __name__ == ""__main__"":
 -  app.run(main)
-",Other
+",Encoding / formatting bug,Refactor MNIST classifier example to remove absl dependency and simplify main function invocation,70.3801157414389,5,99,70.94040430854827,6,94,0.5602885671093674,1,-5,0.9998155832290649,0.9663419088586754,Minor,Minor,YES
 51fc713089f8e456d95f79e4ed58687eb72edbfb,"Matthew Johnson: remove absl from examples, fix import statements",examples/mnist_classifier_fromscratch.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -1337,7 +1337,7 @@ index 58b660024ad1ccb527866fc8c84a7feaa1495691..2910b1c3bf5bc78aac5fc26b5e0b5e6f
 -
 -if __name__ == ""__main__"":
 -  app.run(main)
-",Other
+",Localization / i18n bug,Refactor MNIST classifier example to remove absl dependency and simplify main entry point,68.54373666497018,9,99,68.95473088930761,11,94,0.4109942243374291,2,-5,0.9998888969421387,0.9677499827792007,Minor,Minor,YES
 51fc713089f8e456d95f79e4ed58687eb72edbfb,"Matthew Johnson: remove absl from examples, fix import statements",examples/mnist_vae.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -1659,7 +1659,7 @@ index 7e9f719bbeaeae9776c177a90d5774cf0642db5c..e97c181e46ff17ada755fc7b877681f7
 -
 -if __name__ == ""__main__"":
 -  app.run(main)
-",Other
+",Incorrect default / config value,Refactor MNIST VAE example to remove absl dependency and simplify main function invocation,0.0,0,0,0.0,0,0,0.0,0,0,0.9997997283935547,0.9813813116167802,Minor,Minor,YES
 51fc713089f8e456d95f79e4ed58687eb72edbfb,"Matthew Johnson: remove absl from examples, fix import statements",examples/resnet50.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -1952,7 +1952,7 @@ index 0b550b24aa87c1932891a4f81dbee55ce63967c5..d44f40e5620bf078ee0f84a9931f6dda
 -
 -if __name__ == '__main__':
 -  app.run(main)
-",Other
+",Boundary condition / off-by-one,Remove absl dependency and simplify main function in resnet50.py,72.73880935861732,5,134,73.20367015548696,8,126,0.4648607968696439,3,-8,0.9998973608016968,0.9758033140126591,Minor,Minor,YES
 6001fd219d04608d832d286887318e1ff296c1b5,"Peter Hawkins: [JAX] Python 3 fix: xla_client.initialize_platform_name() accepts a string, not bytes, so we shouldn't pass it bytes. (The previous Python 3 change was a bit overzealous and made both changes; apparently this path isn't tested by the tests because they pass an explicit --jax_xla_backend flag..)
 
 PiperOrigin-RevId: 222810811",jax/lib/xla_bridge.py,"# Copyright 2018 Google LLC
@@ -2740,7 +2740,7 @@ index f5b9cf1536bc61925c03ff479b11ab55fa3e414e..442a1f935bc66ee61abcb30ae83d9754
    return xla_client
  
  
-",Other
+",Feature flag / config toggle bug,Fix XLA client initialization by passing platform names as strings instead of bytes.,57.46055601297245,61,384,57.46055601297245,61,384,0.0,0,0,0.9999998807907104,0.9986074357225277,Minor,Minor,YES
 1d2aaad6fe30fef5e7e15a2898358f9120a3686d,"Matthew Johnson: fix handling of symbolic zeros for a few special primitives
 
 PiperOrigin-RevId: 223264329",jax/lax.py,"# Copyright 2018 Google LLC
@@ -7584,7 +7584,7 @@ index 122fd6cbfcbe768d9142863db99e85862c8c05a9..5666cf2121e0392d7fe3c1be72e5e8fd
    return core.pack(val_out), core.pack(tangents_out)
  
  def sort_key_val_transpose_rule(t, keys, values, dimension):
-",Other
+",Dependency / version mismatch,Improve JVP rules for lax operations by instantiating zeros and handling zero tangents.,0.0,518,2385,0.0,522,2399,0.0,4,14,1.0,0.994423180218165,Minor,Minor,YES
 1d2aaad6fe30fef5e7e15a2898358f9120a3686d,"Matthew Johnson: fix handling of symbolic zeros for a few special primitives
 
 PiperOrigin-RevId: 223264329",tests/lax_test.py,"# Copyright 2018 Google LLC
@@ -11590,7 +11590,7 @@ index 136d641d99d30121e6673774e3f9dda9ec0ff42c..800709fef0eb1110514c2d70b11f6668
    @parameterized.named_parameters(
        {""testcase_name"": ""_shape={}_perm={}"".format(
            jtu.format_shape_dtype_string(shape, dtype), perm),
-",Other
+",Security - injection / XSS / SQLi,`Update LaxTest to include gradient checks for dynamic_update_slice with respect to both operand and update`,6.785415351033821,150,1982,6.70869634989725,150,1989,-0.0767190011365714,0,7,1.0,0.9970923549648871,Minor,Minor,YES
 f5232aaeea52c794569d83a5578ff54d82902c52,Dougal Maclaurin: Fixed bug in vjp with constant-zero tangent outputs,jax/api.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -12046,7 +12046,7 @@ index 4bd4005ea8e80a9f399dba959eed0951524c855b..9a2240d58492f448dcc6fd42b910c4a7
  
    return unflatten_fun(fun, io_tree, *py_args)
  
-",Other
+",Incorrect default / config value,Update `lift_linearized` to correctly handle output partial values by changing the return type of `eval_jaxpr` and,47.29061734464608,38,220,47.29061734464608,38,220,0.0,0,0,1.0000001192092896,0.9957219925323018,Minor,Minor,YES
 f5232aaeea52c794569d83a5578ff54d82902c52,Dougal Maclaurin: Fixed bug in vjp with constant-zero tangent outputs,jax/interpreters/ad.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -12880,7 +12880,7 @@ index 10c8af15f84bef02673ae37dfbde39b1e0d6cb61..3f205b1dbe1d4af4e6e55db3ef83e595
        write_cotangent(var, ct)
  
    cotangents_out = map(read_cotangent, jaxpr.invars)
-",Other
+",Boundary condition / off-by-one,`Refactor linearize and vjp to handle paired partial values and ignore constants in cotangents`,30.66149902907896,106,376,28.70003096143056,112,395,-1.9614680676484009,6,19,0.9999998807907104,0.9471396697032849,Minor,Minor,YES
 f5232aaeea52c794569d83a5578ff54d82902c52,Dougal Maclaurin: Fixed bug in vjp with constant-zero tangent outputs,tests/quickercheck.py,"from collections import namedtuple
 from functools import partial
 import numpy.random as npr
@@ -13426,7 +13426,9 @@ index 34162c5a22a36459582adb129152e67298c55d85..828e12c136ff0b3ee7e59c1b5ef31957
    print ""\nok""
  
  if __name__ == ""__main__"":
-",Other
+",Null/None handling,"Refactor quickercheck tests to improve error handling and debugging 
+
+* Removed unused print statement in `vjp_matches_fd` function",0.0,0,0,0.0,0,0,0.0,0,0,0.9999997019767761,0.9932318437834573,Minor,Minor,YES
 585f011d63e77bfafc200fff50d13f0af73e17f7,Dougal: Error message for unimplemented numpy functions,jax/numpy/lax_numpy.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -15645,7 +15647,7 @@ index d0a43546abd181d602d7e9bdb48dd89e031d8c16..82b078bd9c53753948b9ec4ed500b84d
  
  argpartition = _not_implemented(onp.argpartition)
  argsort = _not_implemented(onp.argsort)
-",Other
+",Incorrect caching / stale cache,Raise informative exceptions for unimplemented NumPy functions in lax_numpy.,4.250540512887014,275,1100,4.118977113875492,275,1101,-0.1315633990115214,0,1,1.0,0.9970035464922005,Minor,Minor,YES
 2e4ff400faa0bb8c7137810639cf769a683730c5,Dougal Maclaurin: Fixed bug in vjp with constant-zero tangent outputs,jax/api.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -16101,7 +16103,7 @@ index 4bd4005ea8e80a9f399dba959eed0951524c855b..9a2240d58492f448dcc6fd42b910c4a7
  
    return unflatten_fun(fun, io_tree, *py_args)
  
-",Other
+",Incorrect default / config value,Update `lift_linearized` to correctly handle output values by changing the return type of `eval_jaxpr` and removing,47.29061734464608,38,220,47.29061734464608,38,220,0.0,0,0,1.0000001192092896,0.9957219925323018,Minor,Minor,YES
 2e4ff400faa0bb8c7137810639cf769a683730c5,Dougal Maclaurin: Fixed bug in vjp with constant-zero tangent outputs,jax/interpreters/ad.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -16935,7 +16937,7 @@ index 10c8af15f84bef02673ae37dfbde39b1e0d6cb61..3f205b1dbe1d4af4e6e55db3ef83e595
        write_cotangent(var, ct)
  
    cotangents_out = map(read_cotangent, jaxpr.invars)
-",Other
+",Boundary condition / off-by-one,"Refactor `linearize` to return primal and tangent values separately, and add `ignore_consts` function to handle constants in",30.66149902907896,106,376,28.70003096143056,112,395,-1.9614680676484009,6,19,0.9999998807907104,0.9471396697032849,Minor,Minor,YES
 2e4ff400faa0bb8c7137810639cf769a683730c5,Dougal Maclaurin: Fixed bug in vjp with constant-zero tangent outputs,tests/quickercheck.py,"from collections import namedtuple
 from functools import partial
 import numpy.random as npr
@@ -17481,7 +17483,9 @@ index 34162c5a22a36459582adb129152e67298c55d85..828e12c136ff0b3ee7e59c1b5ef31957
    print ""\nok""
  
  if __name__ == ""__main__"":
-",Other
+",Null/None handling,"Refactor quickercheck tests to improve error handling and debugging 
+
+* Removed unused print statement in `vjp_matches_fd` function",0.0,0,0,0.0,0,0,0.0,0,0,0.9999997019767761,0.9932318437834573,Minor,Minor,YES
 d7b7200884d5a766ffe6398bbcdd105716d915b8,Dougal: Error message for unimplemented numpy functions,jax/numpy/lax_numpy.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -19704,7 +19708,9 @@ index 99bd78dcaae26f97596d0435a7e934f3cabeda69..de7a52d4d718669a09a7e2bf7bed7c77
  
  argpartition = _not_implemented(onp.argpartition)
  argsort = _not_implemented(onp.argsort)
-",Other
+",Exception handling / swallowed exceptions,"```
+Improve _not_implemented decorator to raise informative exceptions
+```",4.069948342975552,276,1102,3.938558016416066,276,1103,-0.1313903265594862,0,1,1.0,0.9970101826767389,Minor,Minor,YES
 f2795cbdeadf5a27a8294d56c9888297a7bcf441,"Peter Hawkins: [JAX] Add a NUMPY_SCALAR_SHAPE constant shape to test_utils.py to allow tests for both numpy scalars as distinct from 0D ndarrays.
 
 Fix mishandling of scalars when passed to np.reshape().
@@ -21926,7 +21932,7 @@ index 99bd78dcaae26f97596d0435a7e934f3cabeda69..5a28af9f2d3d3e0f78d6f6ae0f69cd9c
    computed_newshape = onp.reshape(dummy_val, newshape).shape
    return lax.reshape(a, computed_newshape, dims)
  
-",Other
+",Exception handling / swallowed exceptions,Replace `a.shape` with `shape(a)` in `reshape` function for consistency.,4.069948342975552,276,1102,4.069948342975552,276,1102,0.0,0,0,1.0,0.9995562556725821,Minor,Minor,YES
 f2795cbdeadf5a27a8294d56c9888297a7bcf441,"Peter Hawkins: [JAX] Add a NUMPY_SCALAR_SHAPE constant shape to test_utils.py to allow tests for both numpy scalars as distinct from 0D ndarrays.
 
 Fix mishandling of scalars when passed to np.reshape().
@@ -22845,7 +22851,9 @@ index 2c05a0b65bd9dbff5766102910b461f4c06154e8..649b47be28503fe6df49466d27445fe1
  
  def check_raises(thunk, err_type, msg):
    try:
-",Other
+",Missing input validation,"Add support for numpy scalars in test utilities
+
+* Introduce a special singleton shape `NUMPY_SCALAR_SHAPE` to",42.144665282040194,65,387,41.05352669544143,73,420,-1.0911385865987668,8,33,0.9999999403953552,0.9163942638596729,Minor,Minor,YES
 f2795cbdeadf5a27a8294d56c9888297a7bcf441,"Peter Hawkins: [JAX] Add a NUMPY_SCALAR_SHAPE constant shape to test_utils.py to allow tests for both numpy scalars as distinct from 0D ndarrays.
 
 Fix mishandling of scalars when passed to np.reshape().
@@ -24024,7 +24032,7 @@ index 39163081207bbecfed8d1f3d9db58d8f57408b97..5eae4fdee2181e2c277e835d8b863d49
            ((3, 4), 12),
            ((3, 4), (12,)),
            ((3, 4), -1),
-",Other
+",Dependency / version mismatch,Refactor LaxBackedNumpyTests to use separate shape lists and update bitwise ops to use int_dtypes,37.97083374283312,34,554,38.36002504296627,34,561,0.3891913001331488,0,7,0.9991711378097534,0.9859405052853615,Minor,Minor,YES
 b4344a07bc44f4548c557fbfc3dc08b9978ce001,Matthew Johnson: fix typo in WORKSPACE,WORKSPACE,"http_archive(
     name = ""io_bazel_rules_closure"",
     sha256 = ""a38539c5b5c358548e75b44141b4ab637bba7c4dc02b46b1f62a96d6433f56ae"",
@@ -24131,7 +24139,7 @@ index bbb200c79222b08e00c4c70448c9e1b8e1270723..0df9205617cca0f40f564ae6f274eb9b
  load(""@org_tensorflow//tensorflow:workspace.bzl"", ""tf_workspace"")
  
  tf_workspace(
-",Other
+",Index out of range,Update TensorFlow dependency to use consistent formatting and remove unnecessary whitespace.,0.0,0,0,100.0,0,36,100.0,0,36,0.9998900294303894,0.9916315578765581,Minor,Minor,YES
 c1b9eb19eabb9b02b4140a360bb1ddee17240b2a,"Peter Hawkins: [JAX] Change semantics of dtype promotion to just call numpy.result_type.
 
 * Enable tests for numpy scalars in lax_numpy_test.py.
@@ -24472,7 +24480,7 @@ index 61fd8f7cb1bfef1ae842a7176821c29bd0a1397a..66d913c9ec5d9dcc9aee01f4dd69d482
  
  for t in array_types:
    core.pytype_aval_mappings[t] = ConcreteArray
-",Other
+",Numerical / precision bug,Add support for complex64 type in array_types mapping,53.596173337496445,46,159,53.52089670995322,46,160,-0.075276627543225,0,1,1.0,0.9967858551759287,Minor,Minor,YES
 c1b9eb19eabb9b02b4140a360bb1ddee17240b2a,"Peter Hawkins: [JAX] Change semantics of dtype promotion to just call numpy.result_type.
 
 * Enable tests for numpy scalars in lax_numpy_test.py.
@@ -26695,7 +26703,7 @@ index 5a28af9f2d3d3e0f78d6f6ae0f69cd9ccc9a620c..180b8b6f8a585e4fc1790f80cce6a727
      to_dtype = xla_bridge.canonicalize_dtype(result_type(*from_dtypes))
      return [lax.convert_element_type(x, to_dtype)
              if _dtype(x) != to_dtype else x for x in args]
-",Other
+",Memory leak,Simplify `_promote_dtypes` by removing unnecessary scalar and bool checks.,4.069948342975552,276,1102,4.8812415880237525,271,1099,0.8112932450482004,-5,-3,1.0,0.9941053519176566,Minor,Minor,YES
 c1b9eb19eabb9b02b4140a360bb1ddee17240b2a,"Peter Hawkins: [JAX] Change semantics of dtype promotion to just call numpy.result_type.
 
 * Enable tests for numpy scalars in lax_numpy_test.py.
@@ -27436,7 +27444,7 @@ index 0edd3f1fbfa40fba6264a6caf4d18160742004e3..2b7e4f34b7b58fe8d40e60193f750d33
    return lax.reshape(bits, shape)
  
  
-",Other
+",Deadlock / livelock,Fix threefry_2x32 bit shifting to use uint64 literal for consistency.,53.66854853817868,46,361,53.66333418072513,46,361,-0.0052143574535463,0,0,1.0,0.998046913305508,Minor,Minor,YES
 c1b9eb19eabb9b02b4140a360bb1ddee17240b2a,"Peter Hawkins: [JAX] Change semantics of dtype promotion to just call numpy.result_type.
 
 * Enable tests for numpy scalars in lax_numpy_test.py.
@@ -28697,7 +28705,7 @@ index 5eae4fdee2181e2c277e835d8b863d49b67e7f7d..d275fc2a4198bb86cf8847d07645d108
    @parameterized.named_parameters(
        {""testcase_name"": ""{}_inshape={}_axis={}_keepdims={}"".format(
            rec.test_name.capitalize(),
-",Other
+",Missing or broken tests,Add support for bitwise operations and unsigned integer types in LAX-backed Numpy tests.,38.36002504296627,34,561,34.050731886497594,43,599,-4.3092931564686765,9,38,0.9992893934249878,0.9462309244942633,Minor,Minor,YES
 bfd58854e915439dc9aad057a30dddfee343e681,Peter Hawkins: Fix test case to test for x64 mode during test rather than init time.,tests/lax_numpy_test.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -29922,7 +29930,7 @@ index d275fc2a4198bb86cf8847d07645d10863add1fd..da799b2379d3d3fc3f4c7bc041e28e42
      args_maker = self._GetArgsMaker(rng, shapes, dtypes)
      self._CheckAgainstNumpy(onp_op, lnp_op, args_maker, check_dtypes=True)
      self._CompileAndCheck(lnp_op, args_maker, check_dtypes=True)
-",Other
+",Dead / unused code,Remove conditional exclusion of uint64 dtype and add test skip for x64 types when jax_enable_x64 is False,34.050731886497594,43,599,33.419407699041194,46,601,-0.6313241874564,3,2,0.9994176626205444,0.9947271916571663,Minor,Minor,YES
 ae7df43e9bcdcd4ff70228bfddb1f52973315b8e,Dougal Maclaurin: Fixed bug due to input_shape kwarg not being modified in batching rule for reducers. Fixes b/120595235,jax/interpreters/batching.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -30542,7 +30550,7 @@ index 4611f0daa319214fee4fd7e64c4b8c95d80449ab..56e76461603115be0dddd2147ae61ea9
    return prim.bind(operand, axes=axes, **kwargs), bdim_out
  
  def add_batched(batched_args, batch_dims):
-",Other
+",Dependency / version mismatch,Add input shape to reducer batcher kwargs when available,37.80846405163535,86,302,37.43016676466996,87,304,-0.3782972869653918,1,2,0.9999998807907104,0.9927801988045672,Minor,Minor,YES
 ae7df43e9bcdcd4ff70228bfddb1f52973315b8e,Dougal Maclaurin: Fixed bug due to input_shape kwarg not being modified in batching rule for reducers. Fixes b/120595235,jax/lax.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -35356,7 +35364,7 @@ index 9e5ae12a3816944fbff572504f5515d3747a8ead..5d6d63f58b74ceb9fdf9e68746142e55
    return tuple(onp.delete(operand.shape, axes))
  
  def reduce_sum_translation_rule(c, operand, axes, input_shape):
-",Other
+",Boundary condition / off-by-one,Added shape validation to `reduce_sum_shape_rule` to ensure operand and input shapes match.,0.0,522,2399,0.0,523,2401,0.0,1,2,1.0,0.9988770428309793,Minor,Minor,YES
 db748a046f5f8856cb65dbce0d8d7bc99256d65f,Roy Frostig: py3 compatibility fix,jax/test_util.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -36252,7 +36260,7 @@ index 21525c462c2ce129edc41d80ade975c4d03bd6dc..a605bb781d3f8604741dfe7204ef2064
  from . import api
  from .config import flags
  from .util import partial
-",Other
+",Permission / authorization bug,Add import of xrange from six.moves for Python compatibility.,39.73285276920688,78,440,39.67300941014517,78,442,-0.0598433590617091,0,2,0.9999048709869385,0.998307557563921,Minor,Minor,YES
 16658b97c4ff676e67560d57040122e4e86f0614,Matthew Johnson: fix typo in wheel path,README.md,"# JAX: Autograd and XLA
 
 ![logo](https://raw.githubusercontent.com/google/jax/master/images/jax_logo_250px.png)
@@ -37546,7 +37554,7 @@ index 672ffecd6caa1778929fd0b7d71f03602ab44fd7..3ef0705d6ce8a3035c465c055376a1da
  
  pip install jax  # install jax
  ```
-",Other
+",Dead / unused code,Update README.md to install jaxlib wheel instead of jax wheel,0.0,0,0,0.0,0,0,0.0,0,0,1.000000238418579,0.9995941393451234,Minor,Minor,YES
 7be7d42484fa97fe54b5e57ab9e1a3dea246edb5,Dougal Maclaurin: Fixed json bug,notebooks/quickstart.ipynb,"{
   ""nbformat"": 4,
   ""nbformat_minor"": 0,
@@ -38750,7 +38758,7 @@ index 3b8c69f1a20303bc537b1e6a2aa1c4fa0d6817c2..962ddb45bf57f520ce70097187f77db5
        ],
        ""execution_count"": 0,
        ""outputs"": []
-",Other
+",Typo / wrong variable name,"No meaningful changes were made to the code, as the modification only removed and then immediately re-added the same line. If you",100.0,0,595,100.0,0,595,0.0,0,0,0.9999998807907104,0.9994889771649431,Minor,Minor,YES
 551601965661c95e406c6e420e06775ac300862d,Stephan Hoyer: Fix link in gufuncs notebook,notebooks/gufuncs.ipynb,"{
   ""nbformat"": 4,
   ""nbformat_minor"": 0,
@@ -40210,7 +40218,7 @@ index 84315e1a24139f73ef90644d4a616ed03ac344b5..51895394266fe382f9d4beb39f64eb1a
 -}
 \ No newline at end of file
 +}
-",Other
+",Incorrect caching / stale cache,Fix link formatting in gufuncs.ipynb notebook,100.0,0,720,100.0,0,720,0.0,0,0,0.9999496936798096,0.9997612347437655,Minor,Minor,YES
 30124b6da1eca136a026eb40c94f8fad6885a467,Dougal Maclaurin: Added jit transformations to generated functions. Fixed bug in comparing numpy arrays for equality.,jax/util.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -40535,7 +40543,7 @@ index 38d22f00f8047c0947f1a6270749930a1237ae3c..ea686229bcc35c6fa4ca2755c3949e87
 -    return self.val == other.val
 -
 +    return self.val is other.val
-",Other
+",Typo / wrong variable name,"Change `__eq__` in `WrapHashably` to compare objects by identity, not value.",54.84756155705922,40,157,54.84756155705922,40,156,0.0,0,-1,1.0,0.9966354127021129,Minor,Minor,YES
 30124b6da1eca136a026eb40c94f8fad6885a467,Dougal Maclaurin: Added jit transformations to generated functions. Fixed bug in comparing numpy arrays for equality.,tests/generated_fun_test.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -41102,7 +41110,7 @@ index 3fbc71ebd4dc342904017e77c27f1189c45baa4c..dec320953bb93fa0e28ed1db1500a994
  counter = it.count()
  def fresh_var(ty):
    return Var(next(counter), ty)
-",Other
+",Missing or broken tests,Add just-in-time compilation to generated functions with partial argument specialization.,45.181932746454926,58,269,44.83957985442323,59,274,-0.3423528920316983,1,5,0.9999997615814209,0.9769335300103456,Minor,Minor,YES
 10b61e08f76a34898471d0b5b52a36c19483ea03,Matthew Johnson: fix symbolic zero handling in concat transpose,jax/lax.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -45938,7 +45946,7 @@ index 5d6d63f58b74ceb9fdf9e68746142e554ef8bf4f..fb57be27168584c367697b97aabd09c6
  
  concatenate_p = standard_primitive(
      concatenate_shape_rule, concatenate_dtype_rule, 'concatenate',
-",Other
+",Logging / telemetry bug,Add special case to concatenate_transpose_rule for zero input.,0.0,523,2401,0.0,526,2404,0.0,3,3,1.0,0.9989472026773899,Minor,Minor,YES
 499ea19e44ad68626d3ce10550f27feaf03812df,Matthew Johnson: fix 'unreachable' bug in dot batching rule,jax/lax.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -50835,7 +50843,7 @@ index 5aa30b3679b1f50249d74a8b3d145504389e33d7..4a2bc44fc5bc41912cd290a148d5a923
  
    if lbd is None:
      assert rbd is not None
-",Other
+",Typo / wrong variable name,Optimize `dot_batch_rule` by using `dot` instead of `dot_general` for 2D inputs with batch,0.0,534,2431,0.0,537,2438,0.0,3,7,1.0,0.9959046330237133,Minor,Minor,YES
 499ea19e44ad68626d3ce10550f27feaf03812df,Matthew Johnson: fix 'unreachable' bug in dot batching rule,tests/batching_test.py,"# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the ""License"");
@@ -51390,7 +51398,9 @@ index 80c4ea73f0e6656926b16121b1266b8565ff8fc5..f1ed960af7ecbc37b9a9d863f3b5ee0c
  
  if __name__ == '__main__':
    config.config_with_absl()
-",Other
+",Permission / authorization bug,"```
+Add testDot method to BatchingTest class and import curry from jax.util
+```",46.43263912947697,19,233,45.888571014283,22,250,-0.5440681151939657,3,17,0.999974250793457,0.9129976626217841,Minor,Minor,YES
 38927153b1bb6c60a659c02cacf6771c3cbe4b14,"Peter Hawkins: Fix support for arrays with size-0 dimensions.
 
 * Fix broadcasting rules to support size-0 dimensions.
@@ -56288,7 +56298,7 @@ index 4a2bc44fc5bc41912cd290a148d5a923bf81ba58..3d83b755a6768716f9b7956cd13b5346
    if not onp.all((shapes == result_shape) | (shapes == 1)):
      msg = '{} got incompatible shapes for broadcasting: {}.'
      raise TypeError(msg.format(name, ', '.join(map(str, map(tuple, shapes)))))
-",Other
+",Resource leak (files/sockets),Modify broadcasting shape rule to handle zero-sized dimensions correctly,0.0,537,2438,0.0,537,2440,0.0,0,2,1.0,0.9987583942005461,Minor,Minor,YES
 38927153b1bb6c60a659c02cacf6771c3cbe4b14,"Peter Hawkins: Fix support for arrays with size-0 dimensions.
 
 * Fix broadcasting rules to support size-0 dimensions.
@@ -58568,7 +58578,7 @@ index 7da6fb38a04fa648fbf7da767b11676586b08590..15d6cbbf4529c436df17e466c1b1f2b3
    if not onp.all((shapes == result_shape) | (shapes == 1)):
      raise ValueError(""Incompatible shapes for broadcasting: {}""
                       .format(tuple(map(tuple, shapes))))
-",Other
+",Incorrect caching / stale cache,Update broadcasting logic to handle zero-sized dimensions correctly,3.341384461140533,278,1129,3.278576616340094,278,1131,-0.0628078448004396,0,2,0.9999998807907104,0.9968300601308231,Minor,Minor,YES
 38927153b1bb6c60a659c02cacf6771c3cbe4b14,"Peter Hawkins: Fix support for arrays with size-0 dimensions.
 
 * Fix broadcasting rules to support size-0 dimensions.
@@ -59477,7 +59487,7 @@ index a605bb781d3f8604741dfe7204ef2064b0289c3b..62189102a0a0eab05e80bb54096a877e
  
    return partial(_rand_dtype, randn, scale=100., post=post)
  
-",Other
+",Boundary condition / off-by-one,Fix `rand_some_equal` function to handle empty arrays correctly,39.67300941014517,78,442,39.39947688400607,78,445,-0.2735325261390997,0,3,1.0,0.994074591025845,Minor,Minor,YES
 38927153b1bb6c60a659c02cacf6771c3cbe4b14,"Peter Hawkins: Fix support for arrays with size-0 dimensions.
 
 * Fix broadcasting rules to support size-0 dimensions.
@@ -60972,7 +60982,9 @@ index 2f9b823f55704dad21abbfe5407cca237f79a497..ea6ef11a62d2031663b3200cf814e458
        for axis in range(-len(shape), len(shape))))
    def testArgMinMax(self, onp_op, lnp_op, rng, shape, dtype, axis):
  
-",Other
+",Race condition / concurrency,"Add shape parameter to OpRecord and update op_record function
+
+* Modified OpRecord namedtuple to include a ""shapes"" parameter",32.76973751625087,47,619,32.74148693402399,50,637,-0.0282505822268817,3,18,0.9991068243980408,0.950984064791728,Minor,Minor,YES
 72b77b5bbe3f181d0efb1cfd9cb88b477f4a4a84,Matthew Johnson: fix typo in notebook text (closes #22),notebooks/gufuncs.ipynb,"{
   ""nbformat"": 4,
   ""nbformat_minor"": 0,
@@ -62428,4 +62440,4 @@ index 805ab23d09a3ef042dcc10c9840f0d4a9b1fd457..7b02d00b71404f0e0211df86fa4263c8
 -}
 \ No newline at end of file
 +}
-",Other
+",Blocking I/O on main thread,"Fix typo in gufuncs.ipynb: ""automatic differention"" -> ""automatic differentiation""",100.0,0,718,100.0,0,718,0.0,0,0,1.000000238418579,0.9996564400149782,Minor,Minor,YES
